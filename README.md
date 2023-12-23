@@ -4,5 +4,5 @@
   - Chat GPT
   - Cyber Chef: https://gchq.github.io/CyberChef/
   - Visual Code
-- Good Luck finding the flags and use information gained from the bug title or code
+- Good Luck finding the flags and use information gained from the challenge title or code
 - Have Fun! 
