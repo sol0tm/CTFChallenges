@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Social Media</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <h1>Simple Social Media</h1>
+
+    <div>
+        <h2>Register</h2>
+        <form id="registerForm">
+            <label for="regUsername">Username:</label>
+            <input type="text" id="regUsername" required>
+            <br>
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" required>
+            <br>
+            <button type="button" onclick="register()">Register</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" required>
+            <br>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" required>
+            <br>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Create Post</h2>
+        <form id="postForm">
+            <label for="postContent">Post Content:</label>
+            <textarea id="postContent" required></textarea>
+            <br>
+            <button type="button" onclick="createPost()">Create Post</button>
+        </form>
+    </div>
+
+    <div id="posts">
+        <h2>Posts</h2>
+        <ul id="postList"></ul>
+    </div>
+
+    <script>
+        // Backend API URL (change this to the actual backend URL)
+        const apiUrl = 'http://localhost:5000';
+
+        function register() {
+            const username = $('#regUsername').val();
+            const password = $('#regPassword').val();
+
+            $.post(`${apiUrl}/register`, { username, password }, function (data) {
+                alert(data.message);
+            });
+        }
+
+        function login() {
+            const username = $('#loginUsername').val();
+            const password = $('#loginPassword').val();
+
+            $.post(`${apiUrl}/login`, { username, password }, function (data) {
+                alert(data.message);
+            });
+        }
+
+        function createPost() {
+            const content = $('#postContent').val();
+            const username = 'testuser';  // Replace with the actual logged-in user
+
+            $.post(`${apiUrl}/post`, { username, content }, function (data) {
+                alert(data.message);
+                // Refresh the post list
+                getPosts(c29sb0NURntTM0NVUjFJVFlfMVNfSU1QMFJUQU5UfQ==);
+            });
+        }
+
+        function getPosts() {
+            $.get(`${apiUrl}/posts`, function (data) {
+                const postList = $('#postList');
+                postList.empty();
+
+                data.forEach(post => {
+                    postList.append(`<li>${post.username}: ${post.content} - Likes: ${post.likes} Dislikes: ${post.dislikes}</li>`);
+                });
+            });
+        }
+
+        // Initial load of posts
+        getPosts();
+    </script>
+
+</body>
+</html>
