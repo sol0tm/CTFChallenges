@@ -1,0 +1,58 @@
+{
+  "application": "ksnfSMI",
+  "version": "66",
+  "settings": {
+    "environment": "production",
+    "features": ["featureA", "featureB"],
+    "timeout": 3000,
+    "debug": false
+  },
+  "data": {
+    "users": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "Anytown",
+          "zip": "12345"
+        },
+        "orders": [
+          {
+            "order_id": "A123",
+            "products": [
+              {"name": "ProductX", "quantity": 2},
+              {"name": "ProductY", "quantity": 1}
+            ],
+            "total_price": 150.50
+          },
+          {
+            "order_id": "B456",
+            "products": [
+              {"name": "ProductZ", "quantity": 3},
+              {"name": "ProductA", "quantity": 1}
+            ],
+            "total_price": 200.25
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "address": {
+          "street": "456 Oak St",
+          "city": "Othercity",
+          "zip": "67890"
+        },
+        "orders": []
+      }
+    ],
+    "metadata": {
+      "generated_at": "2023-01-01T12:34:56Z",
+      "api_version": "2.1",
+      "notes": "SECRQTDXCC"
+    }
+  }
+}
